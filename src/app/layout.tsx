@@ -1,4 +1,12 @@
 import "@/styles/globals.css";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
 
 import { type Metadata } from "next";
 import { Geist } from "next/font/google";
@@ -20,10 +28,12 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
+    <ClerkProvider>
     <html lang="en" className={`${geist.variable}`}>
       <body>
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
     </html>
+    </ClerkProvider>
   );
 }
